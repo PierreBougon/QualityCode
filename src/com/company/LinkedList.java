@@ -1,12 +1,19 @@
 package com.company;
 
-
-import jdk.jfr.Unsigned;
-
 import java.util.NoSuchElementException;
 
 public class LinkedList<T> {
     private LinkedListElement<T> root;
+
+    private class LinkedListElement<T> {
+        public T data;
+        public LinkedListElement<T> next;
+
+        private LinkedListElement(T data, LinkedListElement next) {
+            this.data = data;
+            this.next = next;
+        }
+    }
 
     public LinkedList() {
         this.root = null;
@@ -60,11 +67,18 @@ public class LinkedList<T> {
         return elem.data;
     }
 
-    public T remove(T data) {
-        LinkedListElement<T> prevElem = find(data);
-        LinkedListElement<T> elem = prevElem.next;
+    public T remove(T data) throws NoSuchElementException {
+        LinkedListElement<T> prevElem = findPrevious(data);
+        LinkedListElement<T> elem;
 
-        prevElem.next = prevElem.next.next;
+        if (prevElem == null) {
+            elem = find(data);
+            this.root = elem.next;
+        }
+        else {
+            elem = prevElem.next;
+            prevElem.next = prevElem.next.next;
+        }
         return elem.data;
 
     }
@@ -76,6 +90,17 @@ public class LinkedList<T> {
         }
         if (tmpElem == null)
             throw new NoSuchElementException();
+
+        return tmpElem;
+    }
+
+    private LinkedListElement<T> findPrevious(T data) {
+        LinkedListElement<T> tmpElem = this.root;
+
+        for (; tmpElem != null && tmpElem.next != null && !tmpElem.next.data.equals(data); tmpElem = tmpElem.next) {
+        }
+        if (tmpElem == null)
+            return null;
 
         return tmpElem;
     }
