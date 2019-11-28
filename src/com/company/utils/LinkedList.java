@@ -1,4 +1,4 @@
-package com.company;
+package com.company.utils;
 
 import java.util.NoSuchElementException;
 
@@ -56,7 +56,6 @@ public class LinkedList<T> {
             prevElem = elemAt(position - 1);
             elem = prevElem.next;
         }
-
 
         if (prevElem != null) {
             prevElem.next = prevElem.next.next;
