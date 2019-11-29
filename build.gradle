@@ -11,6 +11,7 @@ jacocoTestReport {
     }
 }
 
+
 apply plugin: 'checkstyle'
 checkstyle {
     toolVersion '7.8.1'
