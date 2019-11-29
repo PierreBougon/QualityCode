@@ -1,4 +1,4 @@
-package com.company.utils;
+package utils;
 
 import java.util.NoSuchElementException;
 
@@ -98,7 +98,7 @@ public class LinkedList<T> {
 
         for (; tmpElem != null && tmpElem.next != null && !tmpElem.next.data.equals(data); tmpElem = tmpElem.next) {
         }
-        if (tmpElem == null)
+        if (tmpElem != null && tmpElem.next == null)
             return null;
 
         return tmpElem;

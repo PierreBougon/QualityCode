@@ -1,6 +1,4 @@
-package com.company;
-
-import com.company.utils.LinkedList;
+import utils.LinkedList;
 
 public class Main {
 
