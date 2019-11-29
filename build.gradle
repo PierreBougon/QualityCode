@@ -19,9 +19,14 @@ checkstyle {
 
 checkstyleMain {
     source ='src/main/java'
+    ignoreFailures true
+    showViolations true
 }
+
 checkstyleTest {
     source ='src/test/java'
+    ignoreFailures true
+    showViolations true
 }
 
 version '1.0-SNAPSHOT'
