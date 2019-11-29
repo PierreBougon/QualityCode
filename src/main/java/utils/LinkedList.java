@@ -2,7 +2,11 @@ package utils;
 
 import java.util.NoSuchElementException;
 
-public class LinkedList<T> {
+/**
+ *
+ * @param <T>
+ */
+ public class LinkedList<T> {
     private LinkedListElement<T> root;
 
     private class LinkedListElement<T> {
@@ -51,16 +55,14 @@ public class LinkedList<T> {
         if (position == 0) {
             prevElem = null;
             elem = elemAt(position);
-        }
-        else {
+        } else {
             prevElem = elemAt(position - 1);
             elem = prevElem.next;
         }
 
         if (prevElem != null) {
             prevElem.next = prevElem.next.next;
-        }
-        else {
+        } else {
             this.root = elem.next;
         }
         return elem.data;
@@ -73,8 +75,7 @@ public class LinkedList<T> {
         if (prevElem == null) {
             elem = find(data);
             this.root = elem.next;
-        }
-        else {
+        } else {
             elem = prevElem.next;
             prevElem.next = prevElem.next.next;
         }
