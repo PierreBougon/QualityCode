@@ -1,11 +1,9 @@
 install: gradle wrapper --gradle-version 5.2.1
 
+before_install:
+  - chmod +x gradlew
+
 language: java
 
-before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-cache:
-  directories:
-    - $HOME/.gradle/caches/
-    - $HOME/.gradle/wrapper/
+jdk:
+  - oraclejdk13
